@@ -169,6 +169,12 @@ public class ExposedSpannerConfig extends SpannerConfig {
   ServiceFactory<Spanner, SpannerOptions> getServiceFactory() {
     return serviceFactory;
   }
+  
+  @Nullable
+  @Override
+  public ValueProvider<String> getDatabaseRole() {
+    return null;
+  }
 
   @Override
   public String toString() {
@@ -383,6 +389,12 @@ public class ExposedSpannerConfig extends SpannerConfig {
     ExposedSpannerConfig.Builder setServiceFactory(
         ServiceFactory<Spanner, SpannerOptions> serviceFactory) {
       this.serviceFactory = serviceFactory;
+      return this;
+    }
+    
+    @Override
+    ExposedSpannerConfig.Builder setDatabaseRole(
+        ValueProvider<String> databaseRole) {
       return this;
     }
 
